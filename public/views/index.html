@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="assignmentApp">
+  <head>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="scripts/client.js"></script>
+
+
+  </head>
+
+  <body ng-controller="AssignmentController as assign">
+    <h1>Assignment List</h1>
+    <h2>Add Assignment</h2>
+    Assignment Number: <input type="number" ng-model="assign.assignmentNum" />
+    Student Name: <input type="text" ng-model="assign.studentName" />
+    Score: <input type="number" ng-model="assign.score" />
+    <button ng-click="assign.makeAssignment()">Add</button>
+
+    <h2>Completed Assignments</h2>
+    <ul>
+      <li ng-repeat="assignment in assign.assignments">
+        Assignment: {{assignment.assignment_number}}<br>Student: {{assignment.student_name}}<br>Score: {{assignment.score}}<br>Completed: {{assignment.date_completed | date:"short"}}
+        <br><button ng-click="assign.deleteAssignment(assignment._id)">Delete this Assignment</button>
+      </li>
+  </body>
+</html>
